@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: dim_customer
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: dim_product
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+
+  - name: dim_store
+    columns:
+      - name: store_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_employee
+    columns:
+      - name: employee_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_payment_method
+    columns:
+      - name: payment_method_key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_sales
+    columns:
+      - name: sales_key
+        tests:
+          - unique
+          - not_null
+      - name: customer_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_key
+      - name: product_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_key
+      - name: store_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_key
+
+  - name: fct_payments
+    columns:
+      - name: payment_key
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_inventory_daily
+    columns:
+      - name: inventory_key
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_order_lifecycle
+    columns:
+      - name: order_key
+        tests:
+          - unique
+          - not_null

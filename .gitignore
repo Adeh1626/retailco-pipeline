@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.env
+logs/
+*.db
+.dbt/
+retailco/target/
+retailco/dbt_packages/
+retailco/logs/
