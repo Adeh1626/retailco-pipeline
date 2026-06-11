@@ -1,5 +1,5 @@
 SELECT
-    MD5(customer_id || updated_at::TEXT)  AS customer_key,
+    MD5(customer_id || dbt_updated_at::TEXT) AS customer_key,
     customer_id,
     customer_name,
     email,
@@ -7,7 +7,7 @@ SELECT
     address,
     city,
     is_deleted,
-    updated_at                            AS valid_from,
-    NULL::TIMESTAMPTZ                     AS valid_to,
-    TRUE                                  AS is_current
-FROM {{ ref('stg_customers') }}
+    dbt_valid_from   AS valid_from,
+    dbt_valid_to     AS valid_to,
+    CASE WHEN dbt_valid_to IS NULL THEN TRUE ELSE FALSE END AS is_current
+FROM {{ ref('snap_customers') }}
