@@ -1,0 +1,3 @@
+apache-airflow==2.9.3
+dbt-core==1.5.11
+dbt-postgres==1.5.11
