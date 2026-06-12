@@ -8,6 +8,9 @@ The pipeline extracts retail data from an ERP API, loads it into a data lake,
 moves it to a data warehouse, and models it into analytics-ready tables using
 Kimball dimensional modelling principles.
 
+## Demo Video
+[Watch the pipeline demo here](https://drive.google.com/file/d/1AR7XpdK5qrtz7HbDdNH81uGxWnWTjxad/view?usp=drive_link)
+
 ## Note on the API
 The original HNG Stage 8 ERP API is no longer available.
 For this portfolio project, I built a fully functional mock ERP server (mock_api/)
